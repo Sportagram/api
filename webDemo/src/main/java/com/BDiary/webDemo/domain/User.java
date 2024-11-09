@@ -1,5 +1,5 @@
 package com.BDiary.webDemo.domain;
-
+/*
 import jakarta.persistence.*;
 // import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
@@ -48,3 +48,4 @@ public class User {
         return this.role.getKey();
     }
 }
+*/

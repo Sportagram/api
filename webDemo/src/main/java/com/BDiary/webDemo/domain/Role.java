@@ -1,6 +1,6 @@
 package com.BDiary.webDemo.domain;
 
-
+/*
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -14,3 +14,4 @@ public enum Role {
     private final String key;
     private final String title;
 }
+*/
