@@ -1,6 +1,4 @@
 package com.BDiary.webDemo.entity;
-
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -10,13 +8,15 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class UserEntity {
+
+public class user {
     @Id
     @GeneratedValue
-    private long id;
-    private String googlename;
+    private long userId;
+    private String name;
     private String email;
-    private String role;
+    private String googlename;
+    private String myteam;
     private String nickname;
-    private String my_team;
+    private String role;
 }

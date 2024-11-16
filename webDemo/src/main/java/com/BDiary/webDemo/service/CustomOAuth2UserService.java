@@ -4,6 +4,7 @@ import com.BDiary.webDemo.dto.CustomOAuth2User;
 import com.BDiary.webDemo.dto.GoogleResponse;
 import com.BDiary.webDemo.dto.OAuth2Response;
 import com.BDiary.webDemo.entity.UserEntity;
+import com.BDiary.webDemo.entity.user;
 import com.BDiary.webDemo.repository.UserRepository;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -39,21 +40,22 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         }
 
         String username = oAuth2Response.getProvider()+" "+oAuth2Response.getProviderId();
-        UserEntity existData = userRepository.findByUsername(username);
+        user existData = userRepository.findByGooglename(username);
 
         String role = "ROLE_USER";
         if (existData == null) {
 
-            UserEntity userEntity = new UserEntity();
-            userEntity.setUsername(username);
+            user userEntity = new user();
+            userEntity.setGooglename(username);
             userEntity.setEmail(oAuth2Response.getEmail());
             userEntity.setRole(role);
+
 
             userRepository.save(userEntity);
         }
         else {
 
-            existData.setUsername(username);
+            existData.setGooglename(username);
             existData.setEmail(oAuth2Response.getEmail());
 
             role = existData.getRole();
