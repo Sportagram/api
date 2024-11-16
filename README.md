@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # BDiary
 
 ##### localhost:/8080/login 
@@ -17,3 +18,6 @@
 3. 설정 페이지 -> 유저 정보 (nickname, email, myteam) 불러오기 _ endpoint: /user/settings
 3. 1) 유저 정보 수정 
 4. 뉴스 크롤링 -> 화면 확인을 못하여 아직 진행 중
+=======
+# BDiary
+>>>>>>> 577bc070ba99c632c53c816219e7b73e5fd4f0a2
