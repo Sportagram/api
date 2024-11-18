@@ -3,7 +3,6 @@ package com.BDiary.webDemo.service;
 import com.BDiary.webDemo.dto.CustomOAuth2User;
 import com.BDiary.webDemo.dto.GoogleResponse;
 import com.BDiary.webDemo.dto.OAuth2Response;
-import com.BDiary.webDemo.entity.UserEntity;
 import com.BDiary.webDemo.entity.user;
 import com.BDiary.webDemo.repository.UserRepository;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -43,13 +42,18 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         user existData = userRepository.findByGooglename(username);
 
         String role = "ROLE_USER";
+
+        // 이메일에서 @ 앞부분 추출
+        String email = oAuth2Response.getEmail();
+        String userId = email.substring(0, email.indexOf("@"));
+
         if (existData == null) {
 
             user userEntity = new user();
             userEntity.setGooglename(username);
             userEntity.setEmail(oAuth2Response.getEmail());
+            userEntity.setUserId(userId);
             userEntity.setRole(role);
-
 
             userRepository.save(userEntity);
         }
@@ -57,6 +61,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
             existData.setGooglename(username);
             existData.setEmail(oAuth2Response.getEmail());
+            existData.setUserId(userId);
 
             role = existData.getRole();
 

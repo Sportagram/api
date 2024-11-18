@@ -1,20 +1,15 @@
 package com.BDiary.webDemo.controller;
 
 import com.BDiary.webDemo.dto.CustomOAuth2User;
-import com.BDiary.webDemo.entity.News;
 import com.BDiary.webDemo.entity.user;
 import com.BDiary.webDemo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.Authentication;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /*
@@ -65,6 +60,7 @@ public class MainController {
             response.put("isProfileComplete", user.getNickname() != null && user.getMyteam() != null);
             response.put("nickname", user.getNickname());
             response.put("myteam", user.getMyteam());
+            response.put("userid", user.getUserId());
 
             return ResponseEntity.ok(response);
         }

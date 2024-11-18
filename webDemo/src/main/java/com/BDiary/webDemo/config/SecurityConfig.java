@@ -26,6 +26,7 @@ public class SecurityConfig {
     }
 
 
+    /*
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
@@ -57,4 +58,32 @@ public class SecurityConfig {
 
         return http.build();
     }
+
+     */
+
+
+
+    // 이 코드는 postman에서의 test를 위한 코드이므로 실제 실행 시 주석 처리 요망
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf((csrf) -> csrf.disable())
+                .formLogin((login) -> login.disable())
+                .httpBasic((basic) -> basic.disable())
+                .oauth2Login((oauth2) -> oauth2
+                        .userInfoEndpoint((userInfoEndpointConfig) ->
+                                userInfoEndpointConfig.userService(customOAuth2UserService)
+                        )
+                )
+                .authorizeHttpRequests((auth) -> auth
+                        .requestMatchers("/api/**").permitAll()  // API 엔드포인트 허용
+                        .requestMatchers("/oauth2/**", "/login/**").permitAll()
+                        .anyRequest().authenticated()
+                );
+
+        return http.build();
+    }
+
+
 }

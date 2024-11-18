@@ -11,9 +11,7 @@ import lombok.Setter;
 
 public class user {
     @Id
-    @GeneratedValue
-    private long userId;
-    private String name;
+    private String userId;
     private String email;
     private String googlename;
     private String myteam;
